@@ -338,6 +338,13 @@ impl<'a, Term: 'a + Terminal> Reader<'a, Term> {
         }
     }
 
+	/// Pushes the byte array onto the end of the current `ReadLock` `input_buffer`.
+	pub fn push_input(&mut self, buf: &[u8]) {
+		for byte in buf {
+			self.lock.input_buffer.push(*byte)
+		}
+	}
+
     /// Sets the cursor position in the input buffer.
     ///
     /// This method internally acquires the `Interface` write lock.
