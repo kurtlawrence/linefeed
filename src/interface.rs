@@ -411,6 +411,11 @@ impl<Term: Terminal> Interface<Term> {
         self.lock_reader().set_buffer(buf)
     }
 
+	/// Pushes bytes straight onto the `Reader` input buffer.
+	pub fn push_input(&mut self, buf: &[u8]) {
+		self.lock_reader().push_input(buf)
+	}
+
     /// Sets the cursor position in the input buffer.
     ///
     /// # Panics
